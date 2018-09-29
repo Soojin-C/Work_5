@@ -20,7 +20,7 @@ int main(){
 	printf("%d ... 1 Means that var1 was greater than var 2 \n", strcmp(pvar2, pvar1));
 	
 	printf("Comparing %s and %s : \n\t", pvar1, pvar3);
-	printf("%d ... -99 Even though the first character is the same, the rest do not match causing tht inbalance.\n ----------------------------\n", strcmp(pvar1, pvar3));
+	printf("%d ... 0 Even though the first character is the same, the rest do not match causing tht inbalance.\n ----------------------------\n", strcmp(pvar1, pvar3));
 	
 	/*
 	printf("Using strncmp to compare:\n\n");
