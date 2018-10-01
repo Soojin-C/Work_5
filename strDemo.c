@@ -1,52 +1,53 @@
 #include <stdio.h>
-#include "myStrcmp.h"
+#include <stdlib.h>
+#include "myStrfun.h"
 #include <string.h>
 
 int main(){
+
+  char val[] = "hello";
 	
   char pvar1[] = "a";
   char pvar2[] = "b";
   char pvar3[] = "acde";
   char *pa = "abd";
-  
-  printf("The use of strcmp and strncmp: \n");
-  
-  printf("\nUsing strcmp to compare:\n\n");
-  
+
+  printf("strlen(\"acde\"): \nOurs:%d \nStandard:%lu \n\n", myStrlen(val), strlen(val));
+	
   //strcmp:
-  printf("Comparing %s and %s : \n\t", pvar1, pvar2);
-  printf("%d ... %d Means that var1 was less than var 2 \n", myStrcmp(pvar1, pvar2), strcmp(pvar1, pvar2));
-  
-  printf("Comparing %s and %s : \n\t", pvar2, pvar1);
-  printf("%d ... %d Means that var1 was greater than var 2 \n",myStrcmp(pvar2, pvar1) , strcmp(pvar2, pvar1));
-  
-  printf("Comparing %s and %s : \n\t", pvar1, pvar3);
-  printf("%d ... %d Even though the first character is the same, the rest do not match causing tht inbalance.\n ----------------------------\n", myStrcmp(pvar1, pvar3), strcmp(pvar1, pvar3));
-  
-  
-  printf("Using strncmp to compare:\n\n");
-  
-  printf("Comparing %s and %s up to %d: \n\t", pvar1, pvar3, 1);
-  printf("%d...%d only comparing [0,1)\n", myStrncmp(pvar1, pvar3, 1) , strncmp(pvar1, pvar3, 1));	
-  printf("Comparing %s and %s up to %d: \n\t", pvar1, pvar3, 4);
-  printf("%d... %d no error\n", myStrncmp(pvar1, pvar2, 4), strncmp(pvar1, pvar3, 4));
-  
-  
-  
-  char val1[20] = "hello";
-  char val2[] = "hi";
-  char val3[20] = "hello";
-  char val4[] = "hi";
-  
-  
-  printf ("%s \n", myStrcpy(val1, val2));
-  printf ("%s \n", strcpy(val3, val4));
+  printf("strcmp(\"a\", \"b\"): \nOurs:%d \nStandard:%d \n", myStrcmp(pvar1, pvar2), strcmp(pvar1, pvar2));
+	
+  printf("strcmp(\"a\", \"acde\"): \nOurs:%d \nStandard:%d \n\n", myStrcmp(pvar1, pvar3), strcmp(pvar1, pvar3));
+	
+  printf("strncmp(\"b\", \"acde\", 1): \nOurs:%d \nStandard:%d \n", myStrncmp(pvar2, pvar3, 1), strncmp(pvar2, pvar3, 1));
+	
+  printf("strncmp(\"a\", \"acde\", 1): \nOurs:%d \nStandard:%d \n\n", myStrncmp(pvar1, pvar3, 1), strncmp(pvar1, pvar3, 1));
 
+  char val1[20] = "first";
+  char val2[] = "second";
+  char val3[20] = "first";
+  char val4[] = "third";
+
+   printf ("strcpy(\"first\", \"second\"): \nOurs: %s \n", myStrcpy(val1, val2));
+  printf ("Standard: %s \n\n", strcpy(val3, val2));
+  
+  
+  printf ("strncpy(\"second\",\"third\", 2): \nOurs: %s \n", myStrncpy(val1, val4, 2));
+  printf ("Standard: %s \n\n", strncpy(val3, val4, 2));
+
+
+  char test1[20] = "hello";
+  char test2[] = "world";
+  char test3[20] = "hello";
+
+  char a = 'l';
+
+  printf("strcat(\"hello\", \"world\"): \nOurs: %s\n", myStrcat(test1, test2));
+  printf("Standard: %s\n", strcat(test3, test2));
   
 
-  printf("Using strchr to find char in string:\n\n ");
-  
-  printf("Testing strchr(\"hello\", 'e'): \n[standard]:[%p]\n[mine]:[%p]\n\n",strchr("hello",'e'),myStrchr("hello",'e'));
-  
+  printf("\nstrchar(\"helloworld\", \'l\'): \nOur: %p \n", myStrchr(test1, 'l'));
+  printf("Standard: %p\n", strchr(test1, 'l'));
+
   return 0;
 }

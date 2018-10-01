@@ -1,4 +1,10 @@
-
+int myStrlen(char* s){
+  int retVal = 0;
+  while (*(s + retVal)){
+    retVal += 1;
+  }
+  return retVal;
+}
 
 int myStrcmp(char *s1, char *s2 ){
   int retVal = 0;
@@ -59,6 +65,31 @@ char * myStrcpy(char *dest, char*source){
     *temp = *source;
     source += 1;
     temp += 1;
+  }
+  *temp = *source;
+  return dest;
+}
+
+char * myStrncpy(char *dest, char *source, int n){
+  char*temp = dest;
+  while (n){
+    *temp = *source;
+    source += 1;
+    temp += 1;
+    n--;
+  }
+  return dest;
+}
+
+char* myStrcat(char *dest , char *source){
+  char *temp = dest;
+  while (*temp ){
+    temp++;
+  }
+  while (*source){
+    *temp = *source;
+    temp++;
+    source++;
   }
   *temp = *source;
   return dest;
