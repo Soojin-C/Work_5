@@ -63,3 +63,12 @@ char * myStrcpy(char *dest, char*source){
   *temp = *source;
   return dest;
 }
+
+char * myStrchr( char *s, char c ){
+  for(int x = 0;*(s+x); x++){
+    if(*(s+x) == c){
+      return s+x;
+    }
+  }
+  return NULL;
+}
